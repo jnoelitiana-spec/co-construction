@@ -353,4 +353,4 @@ header {
 .back-btn:hover {
     background-color: var(--accent); /* Change de couleur au survol */
     transform: translateX(-3px); /* Petit effet de glissement vers la gauche */
-}
+} 
