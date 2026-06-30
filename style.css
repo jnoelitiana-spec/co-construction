@@ -1,0 +1,693 @@
+/* 1. VARIABLES DE COULEURS */
+:root {
+    --bg-color: #ffffff;
+    --primary: #2d4a43;
+    --accent: #4862aae8;
+    --text-dark: #1b2b28;
+    --text-light: #f7f3f3;
+}
+
+/* 2. REINITIALISATION */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-color);
+}
+
+/* 3. BARRE DE NAVIGATION STYLE "PIXEL" */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    height: 80px;
+    background-color: var(--white);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.site-container {
+    background-color: var(--white);
+    border-radius: 16px;
+    margin: 24px;
+    min-height: calc(100vh - 80px - 48px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+.logo { 
+    font-weight: 800; 
+    font-size: 1.6rem; 
+    color: var(--text-dark);
+    letter-spacing: -1px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-item {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu a {
+    margin-left: 2rem;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s;
+}
+
+.nav-menu a:hover {
+    color: var(--accent);
+}
+
+.nav-icon { font-size: 0.75rem; }
+
+/* DROPDOWN MENU */
+.dropdown-menu {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    background-color: var(--bg-color);
+    min-width: 220px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    list-style: none;
+    display: none;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.dropdown-menu li a {
+    margin-left: 0;
+    padding: 1rem 1.5rem;
+    display: block;
+}
+
+/* 4. SOUS-MENUS EN LISTE DÉROULANTE (DROPDOWN) */
+.dropdown-menu {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    background-color: var(--white);
+    min-width: 220px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    
+    /* Strictement caché et figé par défaut */
+    display: none; 
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.dropdown-menu li a {
+    margin-left: 0;
+    padding: 1rem 1.5rem;
+    display: block;
+    text-transform: none; /* Enlève les majuscules automatiques pour les sous-liens */
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.dropdown-menu li a:hover {
+    background-color: var(--bg-color);
+    color: var(--accent);
+}
+
+/* LE SURVOL (:hover) EST SUPPRIMÉ, PLACE AU CLIC (.open) */
+.nav-item.dropdown.open .dropdown-menu {
+    display: block; /* S'affiche uniquement au clic */
+}
+
+.nav-item.dropdown.open .nav-icon {
+    transform: rotate(180deg); /* Le petit chevron pivote au clic */
+    color: var(--accent);
+}
+
+/* BOUTONS HERO */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 0.9rem 2.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+
+.btn-filled {
+    background-color: var(--accent);
+    color: var(--text-light);
+}
+
+.btn-filled:hover {
+    background-color: #c9674d;
+}
+
+.btn-outline {
+    border: 2px solid var(--text-light);
+    color: var(--text-light);
+}
+
+.btn-outline:hover {
+    background-color: var(--text-light);
+    color: var(--text-dark);
+}
+
+/* 5. BANDEAU D'INFORMATION (STYLE SABLE/GOLD) */
+.info-bar {
+    background-color: var(--accent); /* Utilise la couleur chaude du modèle */
+    color: var(--text-light);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 2rem 5%;
+    gap: 2rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.info-item .icon {
+    font-size: 2rem;
+    opacity: 0.9;
+}
+
+.info-item h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.info-item p {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+/* RESPONSIVE POUR ÉCRANS MOBILES */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.3rem; }
+    .hero-buttons { flex-direction: column; gap: 0.5rem; }
+    .hero-section { height: auto; padding: 5rem 5%; }
+}
+/* 4. GRANDE SECTION HERO (MIS À JOUR AVEC VOTRE IMAGE) */
+.hero-section {
+    /* Le dégradé linéaire "rgba" sert de filtre sombre pour que votre texte blanc reste parfaitement lisible par-dessus la plage */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), 
+                      url('projet_2_2.jfif'); /* <-- Le chemin vers l'image sur votre ordi */
+    
+    background-size: cover;       /* Force l'image à couvrir tout l'espace sans se déformer */
+    background-position: center;  /* Centre l'image (mer et plage) au milieu du bloc */
+    height: 75vh;                 /* Ajuste la hauteur de la section à 75% de l'écran */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-light);
+    padding: 0 10%;
+}
+/* STYLE POUR LA BARRE DE RECHERCHE DANS LA NAVIGATION */
+.nav-search {
+    margin-left: 2.5rem; /* Crée un espace net après le lien "À propos" */
+    display: flex;
+    align-items: center;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    background-color: #f4f1ea; /* Fond gris très clair/beige assorti au style */
+    border-radius: 50px; /* Bords très arrondis comme vos boutons */
+    padding: 0.3rem 0.6rem 0.3rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+/* Effet moderne au clic sur la recherche */
+.search-form:focus-within {
+    background-color: #ffffff;
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.search-input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    
+    /* FIXE LA TAILLE : La barre gardera TOUJOURS cette largeur exacte */
+    width: 160px; 
+    
+    /* Suppression de la transition d'agrandissement */
+}
+
+/* On supprime le changement de largeur au focus pour qu'elle reste figée */
+.search-input:focus {
+    width: 160px; /* Reste identique à la taille de base */
+}
+
+.search-btn {
+    border: none;
+    background: transparent;
+    color: var(--text-dark);
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.search-btn:hover {
+    opacity: 1;
+    color: var(--accent); /* Devient orange/terracotta au survol */
+}
+/* 8. STYLE DE LA CARTE À L'INTÉRIEUR DE L'IMAGE */
+
+/* Le conteneur transparent qui centre la carte sur la plage */
+.site-container.transparent-box {
+    background-color: transparent;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    padding: 24px;
+}
+
+/* La boîte de description posée SUR l'image */
+.about-card {
+    background-color: var(--white); /* Fond blanc opaque */
+    padding: 3.5rem 10%;
+    border-radius: 16px; /* Coins arrondis pour rappeler le style du site */
+    max-width: 800px; /* Largeur maximale pour que l'image de fond reste bien visible autour */
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); /* Ombre portée sur la plage */
+    text-align: left; /* Texte aligné proprement à gauche à l'intérieur */
+}
+
+/* Style des textes dans la carte */
+.about-card h1 {
+    font-size: 2.8rem;
+    color: var(--primary); /* Reprend votre vert sapin */
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.about-text-block p {
+    font-size: 1.15rem;
+    color: var(--text-dark); /* Texte sombre très lisible */
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+}
+
+.about-text-block strong {
+    color: var(--accent); /* Vos mots clés en terracotta/doré */
+    font-weight: 600;
+}
+/* STYLE DU BOUTON RETOUR */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem; /* Espace entre la flèche et le texte */
+    margin-top: 2rem;
+    padding: 0.8rem 1.8rem;
+    background-color: var(--primary);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 50px; /* Bords arrondis identiques aux autres boutons */
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.back-btn:hover {
+    background-color: var(--accent); /* Change de couleur au survol */
+    transform: translateX(-3px); /* Petit effet de glissement vers la gauche */
+}
+/* Enveloppe pour les paragraphes de la page À Propos */
+.about-text-block {
+    margin-bottom: 2rem;
+}
+
+/* Espacement global des paragraphes internes */
+.about-text-block p {
+    margin-bottom: 1.2rem;
+}
+
+/* ==========================================================================
+   9. STYLE SPÉCIFIQUE - EN SAVOIR PLUS
+   ========================================================================== */
+
+/* Structure principale de la page */
+.hero-section.flexible-hero {
+    height: auto; 
+    padding: 4rem 5%;
+}
+
+/* Retrait du soulignement du logo dans le header */
+.logo-link {
+    text-decoration: none;
+}
+
+/* Espacement du contenu propre à la page */
+.ensavoirplus-content {
+    margin-top: 2rem;
+}
+
+/* Titres des sections internes */
+.section-title {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin: 2.5rem 0 1.5rem 0;
+    font-weight: 700;
+    border-bottom: 2px solid #f4f1ea;
+    padding-bottom: 0.5rem;
+}
+
+/* Grille pour les 3 piliers */
+.pillars-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.pillar-card {
+    background-color: #f4f1ea;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent);
+}
+
+.pillar-card h3 {
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+}
+
+/* Liste des étapes (numérotées) */
+.step-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+}
+
+.step-number {
+    background-color: var(--accent);
+    color: var(--text-light);
+    font-weight: bold;
+    font-size: 1.2rem;
+    min-width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-content h4 {
+    color: var(--primary);
+    margin-bottom: 0.3rem;
+}
+
+/* Boîtier d'appel à l'action (CTA) */
+.cta-box {
+    background-color: var(--primary);
+    color: var(--text-light);
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.cta-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.cta-box p {
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+/* Arrondi pour les boutons de type pilule */
+.btn-round {
+    border-radius: 50px;
+}
+
+/* Conteneur du bouton de retour */
+.back-btn-container {
+    margin-top: 2rem;
+}
+/* Structure de fond adaptative (utilisée sur les deux pages secondaires) */
+.hero-section.flexible-hero {
+    height: auto; 
+    padding: 4rem 5%;
+}
+
+/* Enveloppes et espacements internes */
+.about-text-block {
+    margin-bottom: 2rem;
+}
+
+.about-text-block p {
+    margin-bottom: 1.2rem;
+}
+
+.back-btn-container {
+    margin-top: 2rem;
+}
+
+.logo-link {
+    text-decoration: none;
+}
+/* ==========================================================================
+   11. BORDURE ET CLARTÉ DU TEXTE DE DESCRIPTION (À PROPOS)
+   ========================================================================== */
+
+/* Bloc contenant la description principale */
+.about-text-block {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border: 2px solid var(--accent); /* Bordure reprenant la couleur accentuée */
+    border-radius: 12px;
+    background-color: rgba(244, 241, 234, 0.7); /* Fond légèrement teinté plus opaque pour isoler le texte du fond */
+}
+
+/* Coloration et lisibilité accrue du texte */
+.about-text-block p {
+    font-size: 1.15rem;
+    color: var(--text-dark); /* Utilise la couleur ultra-sombre pour un contraste maximal */
+    line-height: 1.8; /* Forte hauteur de ligne pour aérer */
+    margin-bottom: 1rem;
+}
+
+/* Mise en valeur colorée des mots importants (balises strong) */
+.about-text-block strong {
+    color: var(--primary); /* Met en valeur le nom du projet avec le vert sapin */
+    font-weight: 700;
+}
+
+/* Retrait de la marge sur le dernier paragraphe du bloc */
+.about-text-block p:last-child {
+    margin-bottom: 0;
+}
+/* ==========================================================================
+   12. BORDURE ET CLARTÉ DE LA DESCRIPTION (EN SAVOIR PLUS)
+   ========================================================================== */
+
+/* Bloc contenant la description principale sur En Savoir Plus */
+.about-card .about-text-block {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border: 2px solid var(--accent); /* Bordure identique reprenant la teinte accentuée */
+    border-radius: 12px;
+    background-color: rgba(244, 241, 234, 0.7); /* Fond teinté semi-opaque pour détacher le texte du fond */
+}
+
+/* Coloration et lisibilité accrue du texte */
+.about-card .about-text-block p {
+    font-size: 1.15rem;
+    color: var(--text-dark); /* Contraste maximal avec la couleur sombre */
+    line-height: 1.8; /* Hauteur de ligne confortable */
+    margin-bottom: 0; /* Pas de marge car il n'y a qu'un paragraphe ici */
+}
+
+/* Coloration des mots importants */
+.about-card .about-text-block strong {
+    color: var(--primary); /* Met en valeur "Co-Construction" avec le vert sapin */
+    font-weight: 700;
+}
+/* ==========================================================================
+   14. OPTIMISATION DE LA CLARTÉ DES TEXTES DANS LES PILIERS (H3)
+   ========================================================================== */
+
+/* Carte globale du pilier */
+.pillar-card {
+    background-color: #f4f1ea; /* Garde le fond beige doux */
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent);
+}
+
+/* Titre H3 du pilier */
+.pillar-card h3 {
+    color: var(--primary); /* Vert sapin profond */
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    font-weight: 700; /* Rend le titre plus percutant */
+}
+
+/* Paragraphe situé sous le H3 rendu plus clair et lisible */
+.pillar-card p {
+    font-size: 1.05rem; /* Taille de police légèrement agrandie pour le confort visuel */
+    color: var(--text-dark); /* Utilisation de la couleur ultra-sombre pour un contraste maximal */
+    line-height: 1.7; /* Hauteur de ligne augmentée pour aérer la lecture */
+    opacity: 1; /* Force l'opacité à 100% pour éviter tout effet de texte "effacé" ou grisâtre */
+}
+/* ==========================================================================
+   TITRES DE SECTIONS INTERNES MAXIMISÉS POUR PLUS DE CLARTÉ (.section-title)
+   ========================================================================== */
+
+.section-title {
+    color: var(--primary); /* Conserve le vert sapin le plus contrasté du site */
+    font-size: 2.1rem; /* Taille augmentée pour détacher nettement le titre */
+    margin: 3rem 0 1.8rem 0; /* Plus d'espace au-dessus et en dessous pour aérer */
+    font-weight: 800; /* Épaisseur maximale pour une lisibilité parfaite */
+    letter-spacing: -0.5px;
+    
+    /* Effet de clarté supplémentaire */
+    background-color: var(--bg-color); /* Fond blanc pur sous le texte pour le faire ressortir */
+    padding: 0.5rem 1rem; /* Donne de l'espace autour du texte à l'intérieur du fond blanc */
+    border-radius: 8px; /* Arrondit légèrement les coins du fond du titre */
+    
+    /* Ligne de séparation très claire et affirmée */
+    border-bottom: 4px solid var(--accent); /* Ligne terracotta plus épaisse et visible */
+}
+/* ==========================================================================
+   MAXIMISATION DE LA CLARTÉ DU TEXTE DANS LES NUMÉROS D'ÉTAPES (.step-number)
+   ========================================================================== */
+
+.step-number {
+    background-color: var(--accent); /* Conserve votre couleur terracotta/bleue */
+    color: #ffffff; /* Force un blanc pur éclatant pour un contraste maximal avec le fond */
+    font-weight: 900; /* Épaisseur maximale du chiffre pour une lecture instantanée */
+    font-size: 1.35rem; /* Taille du texte légèrement augmentée pour être très lisible */
+    
+    /* Structure de la pastille numérique */
+    min-width: 42px; /* Dimensions ajustées pour un cercle parfait et aéré */
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Effet d'ombrage pour détacher et éclaircir visuellement le numéro */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); 
+}
+/* ==========================================================================
+   VISIBILITÉ MAXIMISÉE ET RELIEF POUR LE TITRE D'ÉTAPE (h4)
+   ========================================================================== */
+
+.step-content h4 {
+    color: var(--primary); /* Vert sapin le plus sombre et contrasté du site */
+    font-size: 1.4rem; /* Taille augmentée pour une accroche visuelle immédiate */
+    font-weight: 900; /* Épaisseur maximale absolue */
+    text-transform: uppercase; /* Force le titre en majuscules pour le rendre ultra-visible */
+    letter-spacing: 0.5px; /* Écarte légèrement les lettres pour une lecture parfaite en majuscules */
+    margin-bottom: 0.6rem; /* Espace confortable avant le paragraphe descriptif */
+    line-height: 1.3;
+    
+    /* Effet d'ombrage textuel léger pour faire ressortir les lettres du fond blanc */
+    text-shadow: 1px 1px 0px rgb(245, 242, 242), 
+                 1px 1px 4px rgb(243, 237, 237);
+}
+/* ==========================================================================
+   15. DÉFILEMENT FLUIDE ET BOUTON DIRECTIONNEL BOOTSTRAP (SCROLL TO TOP)
+   ========================================================================== */
+
+/* Active un défilement fluide et progressif vers le haut sur tout le site */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Positionnement et design de la pastille flottante */
+.scroll-to-top {
+    position: fixed;
+    bottom: 40px; /* Aligné en bas de l'écran */
+    right: 40px;  /* Positionné à droite */
+    width: 50px;  /* Taille idéale pour le clic */
+    height: 50px;
+    background-color: var(--accent); /* Teinte terracotta/bleue dynamique du site */
+    color: #ffffff; /* Icône Bootstrap blanche pour un contraste maximal */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Cercle parfait */
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Ombre portée nette */
+    z-index: 1000; /* Priorité d'affichage au-dessus de tout le contenu */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Style de l'icône directionnelle Bootstrap intégrée */
+.scroll-to-top i {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Animation et changement de couleur au survol (Hover) */
+.scroll-to-top:hover {
+    background-color: var(--primary); /* Bascule vers le vert sapin profond au survol */
+    transform: translateY(-5px); /* Légère impulsion vers le haut */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+/* ==========================================================================
+   16. ALIGNEMENT RIGIDE DES PILIERS SUR 3 COLONNES (.pillars-container)
+   ========================================================================== */
+
+.pillars-container {
+    display: grid;
+    /* Force la création de exactement 3 colonnes de taille égale */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 1.5rem; /* Espace net entre chaque colonne */
+    margin-bottom: 2rem;
+}
+
+/* RESPONSIVE : Si l'écran est trop petit (mobile/tablette), on repasse sur 1 colonne pour la clarté */
+@media (max-width: 768px) {
+    .pillars-container {
+        grid-template-columns: 1fr;
+    }
+}

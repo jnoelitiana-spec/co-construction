@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Co-Construction - Éco-construction Collaborative</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">Co-construire.</div>
+        <nav>
+            <ul class="nav-menu">
+                <li class="nav-item dropdown">
+                    <a href="#" class="dropdown-toggle">Plans <i class="bi bi-chevron-down nav-icon"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Matériaux Biosourcés</a></li>
+                        <li><a href="#">Énergie Autonome</a></li>
+                        <li><a href="#">Tiny Houses & Habitats</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item dropdown">
+                    <a href="#" class="dropdown-toggle">Communauté <i class="bi bi-chevron-down nav-icon"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Le Forum d'Entraide</a></li>
+                        <li><a href="#">Chantiers Participatifs</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="apropos.html">À propos</a>
+                </li>
+                
+                <li class="nav-search">
+                    <form action="#" method="GET" class="search-form">
+                        <input type="text" placeholder="Rechercher..." class="search-input">
+                        <button type="submit" class="search-btn">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Construisons demain de nos propres mains.</h1>
+                <p>Accédez à des centaines de plans d'éco-construction en open-source et rejoignez une communauté d'entraide mondiale.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-filled">Explorer les plans</a>
+                    <a href="ensavoirplus.html" class="btn btn-outline">En savoir plus</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-bar">
+            <div class="info-item">
+                <i class="bi bi-clock icon"></i>
+                <div>
+                    <h4>8:00 - 19:00</h4>
+                    <p>Bureaux d'accompagnement</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="bi bi-telephone icon"></i>
+                <div>
+                    <h4>+261 34 00 000 00</h4>
+                    <p>Conseils & Assistance</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="bi bi-envelope icon"></i>
+                <div>
+                    <h4>contact@co-build.com</h4>
+                    <p>Écrivez-nous</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.querySelectorAll('.dropdown-toggle').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault(); // Empêche de recharger la page
+                let parent = this.parentElement;
+                
+                // Ferme l'autre menu s'il est ouvert
+                document.querySelectorAll('.nav-item.dropdown').forEach(dropdown => {
+                    if (dropdown !== parent) dropdown.classList.remove('open');
+                });
+                
+                // Ouvre ou ferme le menu cliqué
+                parent.classList.toggle('open');
+            });
+        });
+
+        // Ferme les menus si on clique n'importe où ailleurs sur l'écran
+        window.addEventListener('click', function(e) {
+            if (!e.target.matches('.dropdown-toggle') && !e.target.matches('.nav-icon')) {
+                document.querySelectorAll('.nav-item.dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('open');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
